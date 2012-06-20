@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:View xmlns:fx="http://ns.adobe.com/mxml/2009" 
+		xmlns:s="library://ns.adobe.com/flex/spark"
+		xmlns:comp="test.luoyong.*"
+		xmlns:v="test.luoyong.tabbedview.*"
+		title="HomeView" xmlns:flexmobiletree="luoyong.flexmobiletree.*">
+	<fx:Declarations>
+		<!-- Place non-visual elements (e.g., services, value objects) here -->
+	</fx:Declarations>
+	
+	<fx:Script>
+		<![CDATA[
+			import luoyong.flexmobiletree.Dir;
+			import luoyong.flexmobiletree.Node;
+			private function refreshList():void {
+				listView.dir = new Dir();
+			}
+			
+			private function calculate():void {
+				var dir1:Dir = new Dir("dir1");
+				var dir2:Dir = new Dir("dir2");
+				dir2.dir = dir1;
+				dir1.addNode(dir2);
+				
+				var dir3:Dir = new Dir("dir3");
+				dir3.dir = dir2;
+				dir2.addNode(dir3);
+				
+				var node41:Node = new Node("node41");
+				var node42:Node = new Node("node42");
+				var node43:Node = new Node("node43");
+				var dir45:Dir = new Dir("dir45");
+				dir3.addNode(node41);
+				dir3.addNode(node42);
+				dir3.addNode(node43);
+				dir3.addNode(dir45);
+				
+				listView.dir = dir3;
+			}
+		]]>
+	</fx:Script>
+	
+	<s:VGroup>
+		<flexmobiletree:ListView id="listView">
+		</flexmobiletree:ListView>
+		<s:Button click="refreshList()">
+			click this
+		</s:Button>
+		<s:Button click="calculate()">
+			click this
+		</s:Button>
+	</s:VGroup>
+</s:View>
