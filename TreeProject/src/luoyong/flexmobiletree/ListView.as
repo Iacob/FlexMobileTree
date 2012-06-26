@@ -24,7 +24,9 @@ package luoyong.flexmobiletree
 		/** Dir the List component to show. */
 		private var _dir:Dir;
 		
-		/** Parent dir and node list from current dir. Wrap them as type ActionItem. */
+		/** Parent dir and node list from current dir.
+		 * The dir and list must be wrapped as type ActionItem.
+		 */
 		private var _nodeList:ArrayList;
 		
 		private var _icon_dir_uplevel:String = "luoyong/flexmobiletree/uplevel.png";
@@ -46,12 +48,23 @@ package luoyong.flexmobiletree
 			_listComponent = new spark.components.List();
 			_listComponent.itemRenderer = new ClassFactory(NodeListRenderer);
 			
+			// Add list component to view.
 			this.addElement(_listComponent);
 			
 			_listComponent.addEventListener(IndexChangeEvent.CHANGE, changeSelection);
 		}
 		
-		private function changeSelection(evt: Event):void {
+		/**
+		 * Selection change action.
+		 */
+		private function changeSelection(evt: spark.events.IndexChangeEvent):void {
+			
+			//trace(_nodeList.getItemAt(evt.newIndex).item.name);
+			var selectedNode:Node = _nodeList.getItemAt(evt.newIndex).item as Node;
+			trace(selectedNode.name);
+			if (selectedNode is Dir) {
+				this.dir = selectedNode as Dir;
+			}
 		}
 		
 		/**
@@ -80,7 +93,7 @@ package luoyong.flexmobiletree
 			var i:int = 0;
 			
 			// Clear node list.
-			this._nodeList = new ArrayList();
+			this._nodeList.removeAll();
 			
 			// Add full dir to list.
 			if (this.dir != null) {
@@ -138,7 +151,7 @@ class ActionItem extends Object {
 	private var _message:String;
 	private var _icon:String;
 	
-	public function ActionItem(item:Object, action:Function=null) {
+	public function ActionItem(item:Node, action:Function=null) {
 		this.label = item.name;
 		this._item = item;
 		this._action = action;
