@@ -27,6 +27,7 @@ package luoyong.flexmobiletree
 		/** Parent dir and node list from current dir. Wrap them as type ActionItem. */
 		private var _nodeList:ArrayList;
 		
+		private var _icon_dir_uplevel:String = "luoyong/flexmobiletree/uplevel.png";
 		private var _icon_dir_path:String = "luoyong/flexmobiletree/dir.png";
 		private var _icon_node_path:String = "luoyong/flexmobiletree/node.png";
 		
@@ -104,7 +105,7 @@ package luoyong.flexmobiletree
 		
 		private function addAncestorDir(dir:Dir):void {
 			var actionDir:ActionItemAncestorDir = new ActionItemAncestorDir(dir);
-			actionDir.icon = this._icon_dir_path;
+			actionDir.icon = this._icon_dir_uplevel;
 			this._nodeList.addItem(actionDir);
 		}
 		
