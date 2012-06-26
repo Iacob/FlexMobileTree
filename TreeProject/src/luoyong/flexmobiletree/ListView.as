@@ -33,6 +33,8 @@ package luoyong.flexmobiletree
 		private var _icon_dir_path:String = "luoyong/flexmobiletree/dir.png";
 		private var _icon_node_path:String = "luoyong/flexmobiletree/node.png";
 		
+		private var _callBackChangeSelection:Function;
+		
 		public function ListView()
 		{
 			super();
@@ -65,6 +67,10 @@ package luoyong.flexmobiletree
 			if (selectedNode is Dir) {
 				this.dir = selectedNode as Dir;
 			}
+			
+			if (this.callbackChangeSelection != null) {
+				this.callbackChangeSelection();
+			}
 		}
 		
 		/**
@@ -80,6 +86,14 @@ package luoyong.flexmobiletree
 		public function set dir(value:Dir):void {
 			this._dir = value;
 			this.refresh();
+		}
+		
+		public function get callbackChangeSelection():Function {
+			return this._callBackChangeSelection;
+		}
+		
+		public function set callBackChangeSelectiona(value:Function):void {
+			this._callBackChangeSelection = value;
 		}
 		
 		/**
