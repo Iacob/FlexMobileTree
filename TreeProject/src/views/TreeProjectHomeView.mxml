@@ -40,8 +40,8 @@
 		]]>
 	</fx:Script>
 	
-	<s:VGroup>
-		<flexmobiletree:ListView id="listView">
+	<s:VGroup width="504">
+		<flexmobiletree:ListView id="listView" width="496">
 		</flexmobiletree:ListView>
 		<s:Button click="refreshList()">
 			click this
