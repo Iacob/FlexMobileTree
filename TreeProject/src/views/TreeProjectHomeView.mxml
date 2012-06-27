@@ -36,6 +36,11 @@
 				dir3.addNode(dir45);
 				
 				listView.dir = dir3;
+				listView.callbackChangeSelection = showListDir;
+			}
+			
+			public function showListDir(dir:Dir):void {
+				trace("new: " + dir.name);
 			}
 		]]>
 	</fx:Script>

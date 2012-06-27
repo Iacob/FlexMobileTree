@@ -61,15 +61,15 @@ package luoyong.flexmobiletree
 		 */
 		private function changeSelection(evt: spark.events.IndexChangeEvent):void {
 			
-			//trace(_nodeList.getItemAt(evt.newIndex).item.name);
 			var selectedNode:Node = _nodeList.getItemAt(evt.newIndex).item as Node;
-			trace(selectedNode.name);
+			//trace(selectedNode.name);
 			if (selectedNode is Dir) {
 				this.dir = selectedNode as Dir;
-			}
-			
-			if (this.callbackChangeSelection != null) {
-				this.callbackChangeSelection();
+				
+				// Call the callback function to notify the dir change.
+				if (this.callbackChangeSelection != null) {
+					this.callbackChangeSelection(this.dir);
+				}
 			}
 		}
 		
@@ -92,7 +92,7 @@ package luoyong.flexmobiletree
 			return this._callBackChangeSelection;
 		}
 		
-		public function set callBackChangeSelectiona(value:Function):void {
+		public function set callbackChangeSelection(value:Function):void {
 			this._callBackChangeSelection = value;
 		}
 		
