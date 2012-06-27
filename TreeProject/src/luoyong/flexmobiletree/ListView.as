@@ -67,8 +67,8 @@ package luoyong.flexmobiletree
 				this.dir = selectedNode as Dir;
 				
 				// Call the callback function to notify the dir change.
-				if (this.callbackChangeSelection != null) {
-					this.callbackChangeSelection(this.dir);
+				if (this.changeSelectionCallback != null) {
+					this.changeSelectionCallback(this.dir);
 				}
 			}
 		}
@@ -88,11 +88,11 @@ package luoyong.flexmobiletree
 			this.refresh();
 		}
 		
-		public function get callbackChangeSelection():Function {
+		public function get changeSelectionCallback():Function {
 			return this._callBackChangeSelection;
 		}
 		
-		public function set callbackChangeSelection(value:Function):void {
+		public function set changeSelectionCallback(value:Function):void {
 			this._callBackChangeSelection = value;
 		}
 		
